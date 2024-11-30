@@ -187,6 +187,7 @@
             });
 
             qrCodeInstance = null;
+            
         }
 
         function scan() {
@@ -244,7 +245,7 @@
             var maxLength = 100;
 
             if (inputText.length > maxLength) {
-                warningMessage.textContent = 'Text exceeds the maximum limit of ' + maxLength + ' characters.';
+                warningMessage.textContent = `Text is too long. Maximum length is ${maxLength} characters.`;
                 qrcodeContainer.style.display = 'none'; 
                 qrcodeMessage.textContent = ''; 
                 saveButton.style.display = 'none'; 
@@ -278,7 +279,7 @@
             var qrcodeDataUrl = document.getElementById("qrcode").querySelector("img").src;
             var downloadLink = document.createElement("a");
             downloadLink.href = qrcodeDataUrl;
-            downloadLink.download = "qrcode.png";
+            downloadLink.download = `qrcode-${Date.now()}.png`;
             downloadLink.click();
         }
 
